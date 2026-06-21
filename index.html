@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Present Simple Adventure</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif
+    }
+
+    :root {
+      --purple: #3a0ca3;
+      --violet: #9b5de5;
+      --cyan: #00f5d4;
+      --yellow: #ffdd57;
+      --pink: #ff4ecd;
+      --dark: #1b103f;
+      --white: #fff
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #ffdd57 0 8%, transparent 25%), linear-gradient(135deg, #3a0ca3, #7b2cbf, #00bbf9);
+      color: white;
+      min-height: 100vh;
+      padding: 24px;
+      overflow-x: hidden
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, .24) 1px, transparent 1px);
+      background-size: 34px 34px;
+      pointer-events: none;
+      animation: floatBg 18s linear infinite;
+      opacity: .55
+    }
+
+    @keyframes floatBg {
+      from {
+        background-position: 0 0
+      }
+
+      to {
+        background-position: 160px 120px
+      }
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      position: relative;
+      z-index: 1
+    }
+
+    .progress-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(27, 16, 63, .75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 20px;
+      padding: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .24)
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #fff
+    }
+
+    .progress-bar {
+      height: 14px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 50px;
+      overflow: hidden
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--yellow), var(--pink));
+      border-radius: 50px;
+      transition: .5s
+    }
+
+    .hero {
+      text-align: center;
+      padding: 72px 20px 56px;
+      border-radius: 34px;
+      margin-bottom: 28px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .08));
+      border: 1px solid rgba(255, 255, 255, .25);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .25);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::after {
+      content: "🎵 📚 🎮 ✨";
+      position: absolute;
+      font-size: 42px;
+      right: 22px;
+      bottom: 18px;
+      opacity: .18;
+      letter-spacing: 14px
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1;
+      background: linear-gradient(90deg, #fff, var(--yellow), var(--cyan));
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 16px
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: .95;
+      margin-bottom: 20px
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .16);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 32px;
+      margin-bottom: 30px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .22);
+      border: 1px solid rgba(255, 255, 255, .28)
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      margin: 12px 0 16px
+    }
+
+    h3 {
+      margin-top: 18px;
+      color: var(--yellow)
+    }
+
+    p,
+    li {
+      line-height: 1.7;
+      font-size: 1.05rem
+    }
+
+    ul {
+      margin-left: 22px;
+      margin-top: 8px
+    }
+
+    .badge,
+    .activity-title {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--purple);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 12px
+    }
+
+    .badge {
+      background: var(--cyan)
+    }
+
+    .formula {
+      background: rgba(0, 0, 0, .28);
+      padding: 15px;
+      border-radius: 16px;
+      margin: 12px 0;
+      font-weight: 800;
+      border-left: 6px solid var(--yellow)
+    }
+
+    button {
+      background: var(--yellow);
+      color: var(--purple);
+      border: none;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: .25s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .18)
+    }
+
+    button:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: #fff
+    }
+
+    .secondary {
+      background: var(--cyan)
+    }
+
+    input,
+    select,
+    textarea {
+      border: none;
+      border-radius: 14px;
+      padding: 12px;
+      margin: 6px;
+      font-weight: 800;
+      text-align: center;
+      color: var(--purple);
+      font-size: 1rem
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      text-align: left;
+      margin: 10px 0 0;
+      font-weight: 500
+    }
+
+    .pronoun-img {
+      display: block;
+      max-width: 550px;
+      width: 100%;
+      margin: 18px auto;
+      border-radius: 24px;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, .25)
+    }
+
+    .citation {
+      font-size: 12px;
+      color: #f2edff;
+      text-align: center;
+      margin-top: 8px;
+      font-style: italic;
+      opacity: .9
+    }
+
+    iframe {
+      width: 100%;
+      height: 150px;
+      border-radius: 18px;
+      border: 0;
+      margin: 18px 0;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .2)
+    }
+
+    .feedback {
+      margin-top: 14px;
+      font-weight: 900;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, .18);
+      display: inline-block
+    }
+
+    .hint {
+      display: none;
+      background: rgba(255, 255, 255, .18);
+      padding: 12px;
+      border-radius: 16px;
+      margin-top: 14px
+    }
+
+    .drag-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 22px;
+      align-items: start
+    }
+
+    .drag-area {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .word {
+      background: #fff;
+      color: var(--purple);
+      padding: 13px 20px;
+      border-radius: 16px;
+      font-weight: 900;
+      cursor: grab;
+      min-width: 95px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .16)
+    }
+
+    .image-targets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px
+    }
+
+    .target {
+      background: rgba(0, 0, 0, .2);
+      border-radius: 22px;
+      padding: 18px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, .18)
+    }
+
+    .target .emoji {
+      font-size: 54px;
+      display: block;
+      margin-bottom: 10px
+    }
+
+    .drop {
+      display: block;
+      background: white;
+      color: var(--purple);
+      border: 3px dashed var(--yellow);
+      padding: 13px;
+      border-radius: 16px;
+      font-weight: 900;
+      min-height: 52px;
+      margin-top: 10px
+    }
+
+    .question {
+      margin: 18px 0;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, .22)
+    }
+
+    .answers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 12px
+    }
+
+    .answer-card {
+      background: #fff;
+      color: var(--purple);
+      padding: 16px;
+      border-radius: 18px;
+      text-align: center;
+      font-weight: 900;
+      cursor: pointer;
+      border: 3px solid transparent
+    }
+
+    .answer-card:hover {
+      border-color: var(--yellow);
+      transform: scale(1.02)
+    }
+
+    .selected {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 245, 212, .25)
+    }
+
+    .memory-board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(90px, 1fr));
+      gap: 14px;
+      margin-top: 18px
+    }
+
+    .memory-card {
+      height: 105px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff, var(--cyan));
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.45rem;
+      font-weight: 1000;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: .25s;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .22);
+      user-select: none
+    }
+
+    .memory-card.hidden {
+      background: linear-gradient(135deg, var(--dark), var(--violet));
+      color: #fff;
+      font-size: 2rem
+    }
+
+    .memory-card.matched {
+      background: linear-gradient(135deg, var(--cyan), #fff);
+      opacity: .85;
+      pointer-events: none
+    }
+
+    .routine-builder {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      align-items: center
+    }
+
+    .routine-output {
+      background: rgba(0, 0, 0, .25);
+      padding: 18px;
+      border-radius: 18px;
+      margin-top: 16px;
+      min-height: 70px;
+      font-size: 1.1rem
+    }
+
+    .certificate {
+      display: none;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255, 221, 87, .28), rgba(0, 245, 212, .2));
+      border: 2px solid var(--yellow)
+    }
+
+    .big-badge {
+      font-size: 4rem
+    }
+
+    .score-pill {
+      display: inline-block;
+      background: #fff;
+      color: var(--purple);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin: 4px
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      opacity: .9
+    }
+
+    .small {
+      font-size: .92rem;
+      opacity: .92
+    }
+
+    @media(max-width:760px) {
+      body {
+        padding: 14px
+      }
+
+      .card {
+        padding: 22px
+      }
+
+      .drag-grid {
+        grid-template-columns: 1fr
+      }
+
+      .memory-board {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      iframe {
+        height: 210px
+      }
+    }
+
+    .song input {
+      height: 10px;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="progress-wrap">
+      <div class="progress-info"><span>🚀 Progreso del reto</span><span id="progressText">0%</span></div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <section class="hero" id="inicio">
+      <h1>Present Simple Adventure</h1>
+      <p>Aprende inglés con música, retos, imágenes, memoria y preguntas tipo juego.</p>
+      <div class="hero-actions">
+        <button onclick="document.getElementById('explicacion').scrollIntoView()">Start Learning</button>
+        <button class="secondary" onclick="resetAll()">Reiniciar reto</button>
+      </div>
+    </section>
+
+    <section class="card" id="explicacion">
+      <span class="badge">Explicación</span>
+      <h2>¿Qué es el Present Simple?</h2>
+      <p>El <strong>Present Simple</strong> se usa para hablar de rutinas, hábitos, hechos generales y situaciones
+        permanentes.</p>
+      <img class="pronoun-img" src="https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg"
+        alt="Pronombres personales en inglés">
+      <p class="citation">Fuente: Pinterest. (s.f.). Pronombres personales en inglés [Imagen]. Recuperado de
+        https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg</p>
+      <h3>Estructura afirmativa</h3>
+      <div class="formula">Subject + Verb + Complement</div>
+      <p>I play soccer. / She plays soccer.</p>
+      <h3>Estructura negativa</h3>
+      <div class="formula">Subject + do/does + not + Verb + Complement</div>
+      <p>I do not play soccer. / She does not play soccer.</p>
+      <h3>Estructura interrogativa</h3>
+      <div class="formula">Do/Does + Subject + Verb + Complement?</div>
+      <p>Do you play soccer? / Does she play soccer?</p>
+      <h3>Regla clave</h3>
+      <p>Con <strong>he, she, it</strong> agregamos <strong>-s</strong> o <strong>-es</strong> al verbo: play → plays,
+        watch → watches, study → studies.</p>
+    </section>
+
+    <section class="card" id="song">
+      <div class="activity-title">Actividad 1: Listen and Complete</div>
+      <h2>Completa la canción</h2>
+      <p>Escucha el audio/video y completa los espacios con los verbos correctos.</p>
+
+
+      <!-- <audio controls>
+        <source src="tu-audio.mp3" type="audio/mpeg">
+        <source src="tu-audio.ogg" type="audio/ogg">
+        
+        Tu navegador no soporta el elemento de audio.
+      </audio> -->
+
+      <audio controls src="LEMON TREE.mp3"></audio>
+
+      <p class="citation" style="text-align: start; margin-bottom: 10px;">
+        Fuente: "Lemon Tree" – Fool's Garden.
+        Audio obtenido de:
+        <a href="https://www.youtube.com/watch?v=VaExN-H5vCc" target="_blank">
+          YouTube
+        </a>.
+        Utilizado con fines educativos. Consulta: 20 de junio de 2026.
+      </p>
+
+      <div class="word-bank">
+
+
+
+
+
+
+        <style>
+          .word-bank {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.15);
+          }
+
+          .instructions {
+            margin-top: 8px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+          }
+
+          .words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+          }
+
+          .word-card {
+            background: #ffdd57;
+            color: #3a0ca3;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          .word-card.used {
+            opacity: 0.45;
+            background: #00f5d4;
+          }
+
+          .word-card.used::after {
+            content: " ✓";
+          }
+        </style>
+
+
+
+
+
+        <div class="word-bank">
+          <h3>Word Bank</h3>
+          <p class="instructions">
+            Lee la letra de la canción y completa los espacios en blanco. Haz clic en cada palabra después de usarla.
+            Si te equivocas, vuelve a hacer clic en ella para desmarcarla.
+
+          </p>
+
+          <div class="words">
+            <span class="word-card" onclick="toggleUsed(this)">wonder</span>
+            <span class="word-card" onclick="toggleUsed(this)">change</span>
+            <span class="word-card" onclick="toggleUsed(this)">see</span>
+            <span class="word-card" onclick="toggleUsed(this)">have</span>
+            <span class="word-card" onclick="toggleUsed(this)">turning</span>
+            <span class="word-card" onclick="toggleUsed(this)">feel</span>
+            <span class="word-card" onclick="toggleUsed(this)">told</span>
+          </div>
+        </div>
+
+        <p class="song">
+          I'm sitting here in the boring room. It's just another rainy Sunday afternoon<br>
+          I'm wasting my time, I <input id="blank2" placeholder="verb" /> nothin' to do.
+          I'm hanging around, I'm waitin' for you<br>
+          But nothing ever happens and I <input id="blank3" placeholder="verb" />.<br><br>
+
+          I'm driving around in my car.
+          I'm drivin' too fast, I'm drivin' too far<br>
+          I'd like to <input id="blank4" placeholder="verb" /> my point of view.
+          I <input id="blank5" placeholder="verb" /> so lonely, I'm waitin' for you<br>
+          But nothing ever happens and I wonder.<br><br>
+
+          I <input id="blank6" placeholder="verb" /> how, I wonder why.
+          Yesterday you <input id="blank7" placeholder="verb" /> me 'bout the blue, blue sky<br>
+          And all that I can <input id="blank8" placeholder="verb" /> is just another lemon tree.<br><br>
+
+          I'm <input id="blank9" placeholder="verb" /> my head up and down.
+          I'm turnin', turnin', turnin', turnin', turnin' around<br>
+          And all that I can see is just another lemon tree
+        </p>
+
+
+
+
+
+
+
+
+
+
+        <script>
+          function toggleUsed(element) {
+            element.classList.toggle("used");
+          }
+        </script>
+
+
+
+
+
+
+        <button onclick="showHint('hintSong')">Show Hint</button>
+        <button onclick="checkBlanks()">Check Answers</button>
+        <div id="hintSong" class="hint">Pista: wake / has / go. Recuerda: con he, she, it el verbo cambia.</div>
+        <div id="feedback1" class="feedback">Aún no has respondido.</div>
+    </section>
+
+    <section class="card" id="dragImage">
+      <div class="activity-title">Actividad 2: Drag and Drop con imágenes</div>
+      <h2>Empareja la acción con la imagen</h2>
+      <p>Arrastra cada verbo a la imagen correspondiente.</p>
+      <div class="drag-grid">
+        <div class="drag-area">
+          <div class="word" draggable="true" ondragstart="drag(event)" id="run">run</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="eat">eat</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="study">study</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="play">play</div>
+        </div>
+        <div class="image-targets">
+          <div class="target"><span class="emoji">🏃</span>
+            <p>She ______ every morning.</p><span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+              data-group="image" data-answer="run">Drop here</span>
+          </div>
+          <div class="target"><span class="emoji">🍽️</span>
+            <p>He ______ lunch at school.</p><span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+              data-group="image" data-answer="eat">Drop here</span>
+          </div>
+          <div class="target"><span class="emoji">📚</span>
+            <p>They ______ English.</p><span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+              data-group="image" data-answer="study">Drop here</span>
+          </div>
+          <div class="target"><span class="emoji">⚽</span>
+            <p>We ______ soccer.</p><span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+              data-group="image" data-answer="play">Drop here</span>
+          </div>
+        </div>
+      </div>
+      <button onclick="checkDragGroup('image','feedback2','dragImage')">Check Activity</button>
+      <div id="feedback2" class="feedback">Aún no has respondido.</div>
+    </section>
+
+    <section class="card" id="dragGrammar">
+      <div class="activity-title">Actividad 3: Drag and Drop gramatical</div>
+      <h2>Empareja los verbos</h2>
+      <p>Arrastra la forma correcta del verbo al espacio correspondiente.</p>
+      <div class="drag-grid">
+        <div class="drag-area">
+          <div class="word" draggable="true" ondragstart="drag(event)" id="plays">plays</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="work">work</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="watches">watches</div>
+        </div>
+        <div>
+          <p>She <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)" data-group="grammar"
+              data-answer="plays">Drop here</span> tennis.</p>
+          <p>They <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)" data-group="grammar"
+              data-answer="work">Drop here</span> at school.</p>
+          <p>He <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)" data-group="grammar"
+              data-answer="watches">Drop here</span> TV.</p>
+        </div>
+      </div>
+      <button onclick="checkDragGroup('grammar','feedbackGrammar','dragGrammar')">Check Activity</button>
+      <div id="feedbackGrammar" class="feedback">Aún no has respondido.</div>
+    </section>
+
+    <section class="card" id="memory">
+      <div class="activity-title">Actividad 4: Memory Game</div>
+      <h2>Encuentra la pareja: imagen + verbo</h2>
+      <p>Haz clic en dos cartas. Debes unir cada imagen con su verbo correspondiente.</p>
+      <p><span class="score-pill">Intentos: <span id="memoryMoves">0</span></span> <span class="score-pill">Parejas:
+          <span id="memoryPairs">0</span>/4</span></p>
+      <div class="memory-board" id="memoryBoard"></div>
+      <button onclick="initMemory()">Reiniciar memoria</button>
+      <div id="feedbackMemory" class="feedback">Encuentra todas las parejas.</div>
+    </section>
+
+    <section class="card" id="quiz">
+      <div class="activity-title">Actividad 5: Opción múltiple</div>
+      <h2>Selecciona la respuesta correcta</h2>
+      <p>Lee cada oración y marca la opción correcta. Al final, presiona <strong>Submit Answers</strong>.</p>
+      <div class="question" data-q="q1" data-answer="goes">
+        <p>1. She ____ to school every day.</p>
+        <div class="answers">
+          <div class="answer-card" data-value="go"><strong>A.</strong> go</div>
+          <div class="answer-card" data-value="goes"><strong>B.</strong> goes</div>
+          <div class="answer-card" data-value="going"><strong>C.</strong> going</div>
+          <div class="answer-card" data-value="went"><strong>D.</strong> went</div>
+        </div>
+      </div>
+      <div class="question" data-q="q2" data-answer="play">
+        <p>2. They ____ football on Saturdays.</p>
+        <div class="answers">
+          <div class="answer-card" data-value="plays"><strong>A.</strong> plays</div>
+          <div class="answer-card" data-value="play"><strong>B.</strong> play</div>
+          <div class="answer-card" data-value="playing"><strong>C.</strong> playing</div>
+          <div class="answer-card" data-value="played"><strong>D.</strong> played</div>
+        </div>
+      </div>
+      <div class="question" data-q="q3" data-answer="Does">
+        <p>3. ____ he like pizza?</p>
+        <div class="answers">
+          <div class="answer-card" data-value="Do"><strong>A.</strong> Do</div>
+          <div class="answer-card" data-value="Does"><strong>B.</strong> Does</div>
+          <div class="answer-card" data-value="Is"><strong>C.</strong> Is</div>
+          <div class="answer-card" data-value="Are"><strong>D.</strong> Are</div>
+        </div>
+      </div>
+      <div class="question" data-q="q4" data-answer="does not">
+        <p>4. My sister ____ watch TV at night.</p>
+        <div class="answers">
+          <div class="answer-card" data-value="do not"><strong>A.</strong> do not</div>
+          <div class="answer-card" data-value="does not"><strong>B.</strong> does not</div>
+          <div class="answer-card" data-value="is not"><strong>C.</strong> is not</div>
+          <div class="answer-card" data-value="not does"><strong>D.</strong> not does</div>
+        </div>
+      </div>
+      <div class="question" data-q="q5" data-answer="studies">
+        <p>5. He ____ English after school.</p>
+        <div class="answers">
+          <div class="answer-card" data-value="study"><strong>A.</strong> study</div>
+          <div class="answer-card" data-value="studies"><strong>B.</strong> studies</div>
+          <div class="answer-card" data-value="studying"><strong>C.</strong> studying</div>
+          <div class="answer-card" data-value="studied"><strong>D.</strong> studied</div>
+        </div>
+      </div>
+      <div class="question" data-q="q6" data-answer="Do">
+        <p>6. ____ you drink water every day?</p>
+        <div class="answers">
+          <div class="answer-card" data-value="Does"><strong>A.</strong> Does</div>
+          <div class="answer-card" data-value="Do"><strong>B.</strong> Do</div>
+          <div class="answer-card" data-value="Are"><strong>C.</strong> Are</div>
+          <div class="answer-card" data-value="Is"><strong>D.</strong> Is</div>
+        </div>
+      </div>
+      <div class="question" data-q="q7" data-answer="watches">
+        <p>7. My father ____ TV after dinner.</p>
+        <div class="answers">
+          <div class="answer-card" data-value="watch"><strong>A.</strong> watch</div>
+          <div class="answer-card" data-value="watches"><strong>B.</strong> watches</div>
+          <div class="answer-card" data-value="watching"><strong>C.</strong> watching</div>
+          <div class="answer-card" data-value="watched"><strong>D.</strong> watched</div>
+        </div>
+      </div>
+      <div class="question" data-q="q8" data-answer="does">
+        <p>8. What time ____ she wake up?</p>
+        <div class="answers">
+          <div class="answer-card" data-value="do"><strong>A.</strong> do</div>
+          <div class="answer-card" data-value="does"><strong>B.</strong> does</div>
+          <div class="answer-card" data-value="is"><strong>C.</strong> is</div>
+          <div class="answer-card" data-value="are"><strong>D.</strong> are</div>
+        </div>
+      </div>
+      <button onclick="checkQuiz()">Submit Answers</button>
+      <div id="feedback3" class="feedback">Aún no has respondido.</div>
+    </section>
+
+
+    <section class="card certificate" id="certificate">
+      <div id="trofeo" class="big-badge">🏆</div>
+      <h2>Congratulations!</h2>
+      <p>You are a <strong>Present Simple Master</strong>.</p>
+      <p id="finalScoreText"></p>
+    </section>
+
+    <footer>Recurso digital interactivo | Present Simple | H5P Style | Gamified Learning</footer>
+  </div>
+
+  <script>
+    const completed = new Set();
+    const totalActivities = 5;
+
+    function markComplete(id) {
+      completed.add(id);
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const percent = Math.round((completed.size / totalActivities) * 100);
+      document.getElementById('progressFill').style.width = percent + '%';
+      document.getElementById('progressText').textContent = percent + '%';
+      if (percent >= 80) {
+        document.getElementById('certificate').style.display = 'block';
+        document.getElementById('finalScoreText').textContent = 'Progreso alcanzado: ' + percent + '%';
+        setTimeout(() => {
+          document.getElementById('trofeo').scrollIntoView({
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    }
+
+    function showHint(id) {
+      const hint = document.getElementById(id);
+      hint.style.display = hint.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function checkBlanks() {
+      const answers = {
+        blank2: "have",
+        blank3: "wonder",
+        blank4: "change",
+        blank5: "feel",
+        blank6: "wonder",
+        blank7: "told",
+        blank8: "see",
+        blank9: "turning"
+      };
+
+      let score = 0;
+      const total = Object.keys(answers).length;
+
+      Object.keys(answers).forEach(id => {
+        const input = document.getElementById(id);
+        const value = input.value.toLowerCase().trim();
+
+        if (value === answers[id]) {
+          score++;
+          input.style.background = "#00f5d4";
+        } else {
+          input.style.background = "#ff8fab";
+        }
+      });
+
+      document.getElementById("feedback1").innerHTML =
+        `You got ${score}/${total} correct. ${score === total
+          ? "Excellent! 🎉"
+          : "Try again. Listen carefully and check the Word Bank."
+        }`;
+
+      if (score === total) {
+        markComplete("song");
+      }
+    }
+    function allowDrop(event) { event.preventDefault(); }
+    function drag(event) { event.dataTransfer.setData('text', event.target.id); }
+    function drop(event) {
+      event.preventDefault();
+      const data = event.dataTransfer.getData('text');
+      event.target.textContent = document.getElementById(data).textContent;
+      event.target.dataset.selected = data;
+    }
+
+    function checkDragGroup(group, feedbackId, activityId) {
+      const drops = document.querySelectorAll(`.drop[data-group="${group}"]`);
+      let score = 0;
+      drops.forEach(drop => {
+        if (drop.dataset.selected === drop.dataset.answer) { score++; drop.style.background = '#00f5d4'; }
+        else { drop.style.background = '#ff8fab'; }
+      });
+      document.getElementById(feedbackId).textContent = `You got ${score}/${drops.length} correct.`;
+      if (score === drops.length) markComplete(activityId);
+    }
+
+    const memoryItems = [
+      { pair: 'run', value: '🏃', type: 'image' }, { pair: 'run', value: 'RUN', type: 'word' },
+      { pair: 'eat', value: '🍽️', type: 'image' }, { pair: 'eat', value: 'EAT', type: 'word' },
+      { pair: 'study', value: '📚', type: 'image' }, { pair: 'study', value: 'STUDY', type: 'word' },
+      { pair: 'play', value: '⚽', type: 'image' }, { pair: 'play', value: 'PLAY', type: 'word' }
+    ];
+    let firstCard = null, secondCard = null, lockMemory = false, memoryMoves = 0, memoryPairs = 0;
+
+    function initMemory() {
+      const board = document.getElementById('memoryBoard');
+      board.innerHTML = '';
+      firstCard = null; secondCard = null; lockMemory = false; memoryMoves = 0; memoryPairs = 0;
+      document.getElementById('memoryMoves').textContent = '0';
+      document.getElementById('memoryPairs').textContent = '0';
+      document.getElementById('feedbackMemory').textContent = 'Encuentra todas las parejas.';
+      const shuffled = [...memoryItems].sort(() => Math.random() - .5);
+      shuffled.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card hidden';
+        card.textContent = '?';
+        card.dataset.value = item.value;
+        card.dataset.pair = item.pair;
+        card.dataset.type = item.type;
+        card.dataset.index = index;
+        card.addEventListener('click', () => flipCard(card));
+        board.appendChild(card);
+      });
+    }
+
+    function flipCard(card) {
+      if (lockMemory || card.classList.contains('matched') || card === firstCard) return;
+      card.classList.remove('hidden');
+      card.textContent = card.dataset.value;
+      if (!firstCard) { firstCard = card; return; }
+      secondCard = card; lockMemory = true; memoryMoves++;
+      document.getElementById('memoryMoves').textContent = memoryMoves;
+      if (firstCard.dataset.pair === secondCard.dataset.pair && firstCard.dataset.type !== secondCard.dataset.type) {
+        firstCard.classList.add('matched'); secondCard.classList.add('matched');
+        memoryPairs++; document.getElementById('memoryPairs').textContent = memoryPairs;
+        firstCard = null; secondCard = null; lockMemory = false;
+        if (memoryPairs === 4) {
+          document.getElementById('feedbackMemory').textContent = 'Great memory! Todas las parejas están correctas. 🎉';
+          markComplete('memory');
+        }
+      } else {
+        setTimeout(() => {
+          firstCard.classList.add('hidden'); secondCard.classList.add('hidden');
+          firstCard.textContent = '?'; secondCard.textContent = '?';
+          firstCard = null; secondCard = null; lockMemory = false;
+        }, 800);
+      }
+    }
+
+    document.querySelectorAll('.answer-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const question = card.closest('.question');
+        question.querySelectorAll('.answer-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        question.dataset.selected = card.dataset.value || card.textContent.trim();
+      });
+    });
+
+    function checkQuiz() {
+      let score = 0;
+      document.querySelectorAll('.question').forEach(q => {
+        const selected = q.dataset.selected;
+        q.querySelectorAll('.answer-card').forEach(card => {
+          if ((card.dataset.value || card.textContent.trim()) === q.dataset.answer) { card.style.background = '#00f5d4'; }
+          if (card.classList.contains('selected') && (card.dataset.value || card.textContent.trim()) !== q.dataset.answer) { card.style.background = '#ff8fab'; }
+        });
+        if (selected === q.dataset.answer) score++;
+      });
+      const totalQuestions = document.querySelectorAll('#quiz .question').length;
+      document.getElementById('feedback3').textContent = `Your score is ${score}/${totalQuestions}. ${score === totalQuestions ? 'Great job! 🏆' : 'Review the Present Simple rules.'}`;
+      if (score === totalQuestions) markComplete('quiz');
+
+    }
+
+    function conjugate(subject, verb) {
+      const thirdPerson = ['He', 'She', 'My mother', 'The teacher'].includes(subject);
+      if (!thirdPerson) return verb;
+      const map = {
+        'wake up': 'wakes up', 'take a shower': 'takes a shower', 'eat breakfast': 'eats breakfast', 'go to school': 'goes to school',
+        'study English': 'studies English', 'read a book': 'reads a book', 'do homework': 'does homework', 'play soccer': 'plays soccer',
+        'watch TV': 'watches TV', 'listen to music': 'listens to music', 'use the computer': 'uses the computer', 'sleep': 'sleeps'
+      };
+      return map[verb] || verb + 's';
+    }
+
+    function generateRoutineSentence() {
+      const s = document.getElementById('subj').value;
+      const v = document.getElementById('verb').value;
+      const t = document.getElementById('time').value;
+      const sentence = `${s} ${conjugate(s, v)} ${t}.`;
+      document.getElementById('routineOutput').textContent = sentence;
+      const area = document.getElementById('routineText');
+      area.value = (area.value ? area.value + ' ' : '') + sentence;
+    }
+
+    function generateSampleRoutine() {
+      const sample = [
+        'I wake up at 6:00 a.m.',
+        'I take a shower in the morning.',
+        'I eat breakfast every day.',
+        'I go to school after breakfast.',
+        'I study English in the morning.',
+        'I read a book before class.',
+        'I do homework after school.',
+        'I play soccer on weekends.',
+        'I use the computer in the afternoon.',
+        'I listen to music at night.',
+        'I sleep at 10:00 p.m.'
+      ].join(' ');
+      document.getElementById('routineText').value = sample;
+      document.getElementById('routineOutput').textContent = 'Full routine generated. You can edit it before finishing.';
+    }
+
+    function completeRoutine() {
+      const text = document.getElementById('routineText').value.trim();
+      if (text.split('.').filter(x => x.trim()).length >= 8) {
+        document.getElementById('routineOutput').textContent = 'Excellent! Your routine has at least eight sentences. 🎉';
+        markComplete('routine');
+      } else {
+        document.getElementById('routineOutput').textContent = 'Write at least eight sentences to complete the challenge.';
+      }
+    }
+
+    function resetAll() {
+      location.reload();
+    }
+
+    initMemory();
+  </script>
+</body>
+
+</html>

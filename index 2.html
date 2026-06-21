@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Present Simple H5P Style</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #cfc4e9, #9b5de5, #00bbf9);
+            color: white;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        h3 {
+            margin-top: 15px;
+            color: #ffdd57;
+        }
+
+        p,
+        li {
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        .formula {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .activity-title {
+            display: inline-block;
+            background: #ffdd57;
+            color: #3a0ca3;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            border-radius: 10px;
+            border: none;
+            margin: 5px;
+            width: 120px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        button {
+            background: #ffdd57;
+            color: #3a0ca3;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: white;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .drag-area {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .word,
+        .drop {
+            background: white;
+            color: #3a0ca3;
+            padding: 12px 18px;
+            border-radius: 15px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .word {
+            cursor: grab;
+        }
+
+        .drop {
+            border: 3px dashed #ffdd57;
+            min-height: 50px;
+        }
+
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        iframe {
+            width: 100%;
+            height: 120px;
+            border-radius: 15px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            border-radius: 15px;
+            border: none;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        .badge {
+            background: #00f5d4;
+            color: #3a0ca3;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+
+        .citation {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Present Simple Interactive Lab</h1>
+            <p>Learn English through music, games and challenges</p>
+        </header>
+
+        <section class="card">
+            <span class="badge">Explicación</span>
+            <h2>¿Qué es el presente simple?</h2>
+            <p>
+                El <strong>Present Simple</strong> se usa para hablar de rutinas, hábitos,
+                hechos generales y situaciones permanentes.
+            </p>
+
+            <img width="550px" src="https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg"
+                alt="Pronombres">
+
+            <p class="citation">
+                Fuente: Pinterest. (s.f.). Pronombres personales en inglés [Imagen]. Recuperado de
+                https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg
+            </p>
+
+
+
+
+            <h3>Estructura afirmativa</h3>
+            <div class="formula">Subject + Verb + Complement</div>
+            <p>I play soccer. / She plays soccer.</p>
+
+            <h3>Estructura negativa</h3>
+            <div class="formula">Subject + do/does + not + Verb + Complement</div>
+            <p>I do not play soccer. / She does not play soccer.</p>
+
+            <h3>Estructura interrogativa</h3>
+            <div class="formula">Do/Does + Subject + Verb + Complement?</div>
+            <p>Do you play soccer? / Does she play soccer?</p>
+
+            <h3>Regla clave</h3>
+            <p>Con <strong>he, she, it</strong> agregamos <strong>-s</strong> o <strong>-es</strong> al verbo.</p>
+        </section>
+
+        <section class="card">
+            <div class="activity-title">Actividad 1: Listen and Complete</div>
+            <h2>Completa la canción</h2>
+
+            <p>Escucha la canción y completa los espacios con los verbos correctos.</p>
+
+            <!-- Puedes cambiar este video/audio por otro enlace de YouTube -->
+            <iframe src="https://www.youtube.com/embed/6k8cpUkKK4c" allowfullscreen></iframe>
+
+            <p>
+                She <input id="blank1" placeholder="verb" /> to school every day. <br>
+                He <input id="blank2" placeholder="verb" /> football on Sundays. <br>
+                They <input id="blank3" placeholder="verb" /> English at night.
+            </p>
+
+            <button onclick="checkBlanks()">Check Answers</button>
+            <div id="feedback1" class="feedback"></div>
+        </section>
+
+
+
+
+
+
+
+  <section class="card">
+            <div class="activity-title">Actividad 2: Drag and Drop</div>
+            <h2>Empareja la acció con la imagen correspondiente</h2>
+
+            <p>Arrastra el verbo correcto a la imagen correspondiente.</p>
+
+
+            <div style="display: flex;">
+                <div style="display: block;" class="drag-area" >
+                    <div class="word" draggable="true" ondragstart="drag(event)" id="plays">go</div>
+                    <div class="word" draggable="true" ondragstart="drag(event)" id="study">work</div>
+                    <div class="word" draggable="true" ondragstart="drag(event)" id="watches">jump</div>
+                </div>
+
+
+
+                <div > //poner imagenes aqui
+                    <p>She <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            data-answer="plays"></span>
+                        tennis.</p>
+                    <p>They <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            data-answer="study"></span>
+                        English.</p>
+                    <p>He <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            data-answer="watches"></span>
+                        TV.</p>
+
+                </div>
+
+
+
+            </div>
+
+
+            <button onclick="checkDrag()">Check Activity</button>
+            <div id="feedback2" class="feedback"></div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section class="card">
+            <div class="activity-title">Actividad 2: Drag and Drop</div>
+            <h2>Empareja los verbos</h2>
+
+            <p>Arrastra el verbo correcto al espacio correspondiente.</p>
+
+
+
+            <div style="display: flex;">
+                <div style="display: block;" class="drag-area" >
+                    <div class="word" draggable="true" ondragstart="drag(event)" id="plays">plays</div>
+                    <div class="word" draggable="true" ondragstart="drag(event)" id="study">study</div>
+                    <div class="word" draggable="true" ondragstart="drag(event)" id="watches">watches</div>
+                </div>
+
+
+
+                <div >
+                    <p>She <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            data-answer="plays"></span>
+                        tennis.</p>
+                    <p>They <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            data-answer="study"></span>
+                        English.</p>
+                    <p>He <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"
+                            data-answer="watches"></span>
+                        TV.</p>
+
+                </div>
+
+
+
+            </div>
+
+
+            <button onclick="checkDrag()">Check Activity</button>
+            <div id="feedback2" class="feedback"></div>
+
+
+
+        </section>
+
+
+//aqui pongaos un juego de memoria con cartas imagenes y palabras
+
+
+
+
+
+
+
+
+        <section class="card">
+            <div class="activity-title">Actividad 3: Multiple Choice</div>
+            <h2>Elige la respuesta correcta</h2>
+
+            <div class="question">
+                <p>1. She ____ to school every day.</p>
+                <label><input type="radio" name="q1" value="go"> go</label>
+                <label><input type="radio" name="q1" value="goes"> goes</label>
+                <label><input type="radio" name="q1" value="going"> going</label>
+            </div>
+
+            <div class="question">
+                <p>2. They ____ football on Saturdays.</p>
+                <label><input type="radio" name="q2" value="plays"> plays</label>
+                <label><input type="radio" name="q2" value="play"> play</label>
+                <label><input type="radio" name="q2" value="playing"> playing</label>
+            </div>
+
+            <div class="question">
+                <p>3. ____ he like pizza?</p>
+                <label><input type="radio" name="q3" value="Do"> Do</label>
+                <label><input type="radio" name="q3" value="Does"> Does</label>
+                <label><input type="radio" name="q3" value="Is"> Is</label>
+            </div>
+
+            <button onclick="checkQuiz()">Submit Quiz</button>
+            <div id="feedback3" class="feedback"></div>
+        </section>
+
+        <section class="card">
+            <div class="activity-title">Final Challenge</div>
+            <h2>Write Your Routine</h2>
+            <p>Escribe tres oraciones sobre tu rutina diaria usando Present Simple.</p>
+
+            <textarea placeholder="Example: I study English every day."></textarea>
+        </section>
+
+        <footer>
+            Recurso digital interactivo | Present Simple | H5P Style
+        </footer>
+
+    </div>
+
+    <script>
+        function checkBlanks() {
+            const b1 = document.getElementById("blank1").value.toLowerCase().trim();
+            const b2 = document.getElementById("blank2").value.toLowerCase().trim();
+            const b3 = document.getElementById("blank3").value.toLowerCase().trim();
+
+            let score = 0;
+
+            if (b1 === "goes") score++;
+            if (b2 === "plays") score++;
+            if (b3 === "study") score++;
+
+            document.getElementById("feedback1").innerHTML =
+                `You got ${score}/3 correct. ${score === 3 ? "Excellent!" : "Try again and remember he/she/it + s."}`;
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            event.target.textContent = data;
+            event.target.setAttribute("data-selected", data);
+        }
+
+        function checkDrag() {
+            const drops = document.querySelectorAll(".drop");
+            let score = 0;
+
+            drops.forEach(drop => {
+                if (drop.dataset.selected === drop.dataset.answer) {
+                    score++;
+                    drop.style.background = "#00f5d4";
+                } else {
+                    drop.style.background = "#ff6b6b";
+                }
+            });
+
+            document.getElementById("feedback2").innerHTML =
+                `You got ${score}/3 correct.`;
+        }
+
+        function checkQuiz() {
+            let score = 0;
+
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+
+            if (q1 && q1.value === "goes") score++;
+            if (q2 && q2.value === "play") score++;
+            if (q3 && q3.value === "Does") score++;
+
+            document.getElementById("feedback3").innerHTML =
+                `Your score is ${score}/3. ${score === 3 ? "Great job!" : "Review the Present Simple rules."}`;
+        }
+    </script>
+</body>
+
+</html>
