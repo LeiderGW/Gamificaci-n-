@@ -29,7 +29,7 @@
     }
 
     body {
-      background: radial-gradient(circle at top left, #ffdd57 0 8%, transparent 25%), linear-gradient(135deg, #3a0ca3, #7b2cbf, #00bbf9);
+      background: radial-gradient(circle at top left, #081d97 0 8%, transparent 25%), linear-gradient(135deg, #3a0ca3, #7b2cbf, #00bbf9);
       color: white;
       min-height: 100vh;
       padding: 24px;
@@ -340,8 +340,8 @@
       padding: 13px;
       border-radius: 16px;
       font-weight: 900;
-      min-height: 52px;
-      margin-top: 10px
+      margin-top: 10px;
+
     }
 
     .question {
@@ -352,21 +352,22 @@
     }
 
     .answers {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
+      display: block;
+
       margin-top: 12px
     }
 
     .answer-card {
       background: #fff;
+      margin-bottom: 4px;
       color: var(--purple);
-      padding: 16px;
+      padding: 1px;
       border-radius: 18px;
-      text-align: center;
+      text-align: left;
       font-weight: 900;
       cursor: pointer;
-      border: 3px solid transparent
+      border: 3px solid transparent;
+      max-width: fit-content;
     }
 
     .answer-card:hover {
@@ -489,6 +490,45 @@
     .song input {
       height: 10px;
       width: 100px;
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+    .video-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 18px;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background .3s ease, transform .2s ease;
+    }
+
+    .video-link:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    .video-link:visited {
+      color: #fff;
+    }
+
+    .video-link strong {
+      color: #fff;
     }
   </style>
 </head>
@@ -513,46 +553,101 @@
 
     <section class="card" id="explicacion">
       <span class="badge">Explicación</span>
+
       <h2>¿Qué es el Present Simple?</h2>
-      <p>El <strong>Present Simple</strong> se usa para hablar de rutinas, hábitos, hechos generales y situaciones
-        permanentes.</p>
+      <p>
+        El <strong>Present Simple</strong> se usa para hablar de rutinas,
+        hábitos, hechos generales y situaciones permanentes.
+      </p>
+
+      <!-- <h1>Personal Pronouns (Pronombres Personales)</h5> -->
+      <p>
+        Antes de formar oraciones en Present Simple, es importante conocer los
+        <strong>pronombres personales</strong>, ya que indican quién realiza la
+        acción.
+      </p>
+
       <img class="pronoun-img" src="https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg"
         alt="Pronombres personales en inglés">
-      <p class="citation">Fuente: Pinterest. (s.f.). Pronombres personales en inglés [Imagen]. Recuperado de
-        https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg</p>
-      <h3>Estructura afirmativa</h3>
-      <div class="formula">Subject + Verb + Complement</div>
-      <p>I play soccer. / She plays soccer.</p>
-      <h3>Estructura negativa</h3>
-      <div class="formula">Subject + do/does + not + Verb + Complement</div>
-      <p>I do not play soccer. / She does not play soccer.</p>
-      <h3>Estructura interrogativa</h3>
-      <div class="formula">Do/Does + Subject + Verb + Complement?</div>
-      <p>Do you play soccer? / Does she play soccer?</p>
-      <h3>Regla clave</h3>
-      <p>Con <strong>he, she, it</strong> agregamos <strong>-s</strong> o <strong>-es</strong> al verbo: play → plays,
-        watch → watches, study → studies.</p>
+
+      <p class="citation">
+        Fuente: Pinterest. (s.f.). Pronombres personales en inglés [Imagen].
+        Recuperado de
+        https://i.pinimg.com/736x/88/f1/1a/88f11a2cc645e9068b5e7504e6d9f718.jpg
+      </p>
+
+
+
+      <h2>Estructuras del Present Simple</h2>
+
+      <h3>1. Estructura afirmativa</h3>
+      <p><strong>¿Para qué se usa?</strong> Para expresar rutinas, hábitos, hechos y acciones habituales.</p>
+
+      <div class="formula">
+        Subject + Verb + Complement
+      </div>
+
+      <p>
+        I play soccer.<br>
+        She plays soccer.
+      </p>
+
+      <h3>2. Estructura negativa</h3>
+      <p><strong>¿Para qué se usa?</strong> Para decir que una acción no ocurre o no es verdadera.</p>
+
+      <div class="formula">
+        Subject + do/does + not + Verb + Complement
+      </div>
+
+      <p>
+        I do not play soccer.<br>
+        She does not play soccer.
+      </p>
+
+      <h3>3. Estructura interrogativa</h3>
+      <p><strong>¿Para qué se usa?</strong> Para hacer preguntas sobre hábitos, rutinas o información general.</p>
+
+      <div class="formula">
+        Do/Does + Subject + Verb + Complement?
+      </div>
+
+      <p>
+        Do you play soccer?<br>
+        Does she play soccer?
+      </p>
+
+      <h3>Regla importante</h3>
+      <p>
+        Cuando el sujeto es <strong>he, she o it</strong>, el verbo cambia en la
+        forma afirmativa:
+      </p>
+
+      <ul>
+        <li><strong>+ s:</strong> play → plays</li>
+        <li><strong>+ es:</strong> watch → watches</li>
+        <li><strong>y → ies:</strong> study → studies</li>
+      </ul>
+
+      <a class="video-link" href="https://www.youtube.com/watch?v=Ho2fyL2_M_E" target="_blank">
+        🎥 Mira el siguiente video para profundizar en la conjugación de verbos con <strong>he, she e it</strong>.
+      </a>
+
     </section>
+
+
 
     <section class="card" id="song">
       <div class="activity-title">Actividad 1: Listen and Complete</div>
       <h2>Completa la canción</h2>
-      <p>Escucha el audio/video y completa los espacios con los verbos correctos.</p>
+      <p>Escucha el audio y completa los espacios con los verbos correctos.</p>
 
-
-      <!-- <audio controls>
-        <source src="tu-audio.mp3" type="audio/mpeg">
-        <source src="tu-audio.ogg" type="audio/ogg">
-        
-        Tu navegador no soporta el elemento de audio.
-      </audio> -->
 
       <audio controls src="LEMON TREE.mp3"></audio>
 
       <p class="citation" style="text-align: start; margin-bottom: 10px;">
         Fuente: "Lemon Tree" – Fool's Garden.
         Audio obtenido de:
-        <a href="https://www.youtube.com/watch?v=VaExN-H5vCc" target="_blank">
+        <a style="color: rgb(195, 219, 252);" href="https://www.youtube.com/watch?v=VaExN-H5vCc" target="_blank">
           YouTube
         </a>.
         Utilizado con fines educativos. Consulta: 20 de junio de 2026.
@@ -579,31 +674,34 @@
             font-size: 0.95rem;
           }
 
-          .words {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+          .words-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
           }
 
-          .word-card {
-            background: #ffdd57;
-            color: #3a0ca3;
-            padding: 10px 18px;
-            border-radius: 20px;
+          .words-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
             font-weight: bold;
+            color: #333;
             cursor: pointer;
+            transition: background 0.2s;
           }
 
-          .word-card.used {
-            opacity: 0.45;
-            background: #00f5d4;
+          .words-table td:hover {
+            background: #f5f5f5;
           }
 
-          .word-card.used::after {
-            content: " ✓";
+          .words-table td.used {
+            color: #999;
+            text-decoration: line-through;
+            background: #e9ecef;
           }
         </style>
-
 
 
 
@@ -611,67 +709,66 @@
         <div class="word-bank">
           <h3>Word Bank</h3>
           <p class="instructions">
-            Lee la letra de la canción y completa los espacios en blanco. Haz clic en cada palabra después de usarla.
-            Si te equivocas, vuelve a hacer clic en ella para desmarcarla.
+            Lee la letra de la canción y completa cada espacio en blanco con el verbo correcto del banco de
+            palabras.<br>
+            Para ayudarte, puedes hacer clic en las palabras para marcarlas una vez que las hayas usado.
+
 
           </p>
 
-          <div class="words">
-            <span class="word-card" onclick="toggleUsed(this)">wonder</span>
-            <span class="word-card" onclick="toggleUsed(this)">change</span>
-            <span class="word-card" onclick="toggleUsed(this)">see</span>
-            <span class="word-card" onclick="toggleUsed(this)">have</span>
-            <span class="word-card" onclick="toggleUsed(this)">turning</span>
-            <span class="word-card" onclick="toggleUsed(this)">feel</span>
-            <span class="word-card" onclick="toggleUsed(this)">told</span>
+          <div class="word-bank">
+            <table class="words-table">
+              <tr>
+                <td onclick="toggleUsed(this)">wonder</td>
+                <td onclick="toggleUsed(this)">change</td>
+                <td onclick="toggleUsed(this)">see</td>
+                <td onclick="toggleUsed(this)">have</td>
+              </tr>
+              <tr>
+                <td onclick="toggleUsed(this)">turning</td>
+                <td onclick="toggleUsed(this)">feel</td>
+                <td onclick="toggleUsed(this)">told</td>
+                <td></td>
+              </tr>
+            </table>
           </div>
-        </div>
 
-        <p class="song">
-          I'm sitting here in the boring room. It's just another rainy Sunday afternoon<br>
-          I'm wasting my time, I <input id="blank2" placeholder="verb" /> nothin' to do.
-          I'm hanging around, I'm waitin' for you<br>
-          But nothing ever happens and I <input id="blank3" placeholder="verb" />.<br><br>
+          <p class="song">
+            I'm sitting here in the boring room. It's just another rainy Sunday afternoon<br>
+            I'm wasting my time, I <input id="blank2" placeholder="verb" /> nothin' to do.
+            I'm hanging around, I'm waitin' for you<br>
+            But nothing ever happens and I <input id="blank3" placeholder="verb" />.<br><br>
 
-          I'm driving around in my car.
-          I'm drivin' too fast, I'm drivin' too far<br>
-          I'd like to <input id="blank4" placeholder="verb" /> my point of view.
-          I <input id="blank5" placeholder="verb" /> so lonely, I'm waitin' for you<br>
-          But nothing ever happens and I wonder.<br><br>
+            I'm driving around in my car.
+            I'm drivin' too fast, I'm drivin' too far<br>
+            I'd like to <input id="blank4" placeholder="verb" /> my point of view.
+            I <input id="blank5" placeholder="verb" /> so lonely, I'm waitin' for you<br>
+            But nothing ever happens and I wonder.<br><br>
 
-          I <input id="blank6" placeholder="verb" /> how, I wonder why.
-          Yesterday you <input id="blank7" placeholder="verb" /> me 'bout the blue, blue sky<br>
-          And all that I can <input id="blank8" placeholder="verb" /> is just another lemon tree.<br><br>
+            I <input id="blank6" placeholder="verb" /> how, I wonder why.
+            Yesterday you <input id="blank7" placeholder="verb" /> me 'bout the blue, blue sky<br>
+            And all that I can <input id="blank8" placeholder="verb" /> is just another lemon tree.<br><br>
 
-          I'm <input id="blank9" placeholder="verb" /> my head up and down.
-          I'm turnin', turnin', turnin', turnin', turnin' around<br>
-          And all that I can see is just another lemon tree
-        </p>
-
+            I'm <input id="blank9" placeholder="verb" /> my head up and down.
+            I'm turnin', turnin', turnin', turnin', turnin' around<br>
+            And all that I can see is just another lemon tree
+          </p>
 
 
 
 
-
-
-
-
-
-        <script>
-          function toggleUsed(element) {
-            element.classList.toggle("used");
-          }
-        </script>
+          <script>
+            function toggleUsed(element) {
+              element.classList.toggle("used");
+            }
+          </script>
 
 
 
 
 
-
-        <button onclick="showHint('hintSong')">Show Hint</button>
-        <button onclick="checkBlanks()">Check Answers</button>
-        <div id="hintSong" class="hint">Pista: wake / has / go. Recuerda: con he, she, it el verbo cambia.</div>
-        <div id="feedback1" class="feedback">Aún no has respondido.</div>
+          <button onclick="checkBlanks()">Check Answers</button>
+          <div id="feedback1" class="feedback">Aún no has respondido.</div>
     </section>
 
     <section class="card" id="dragImage">
@@ -680,10 +777,10 @@
       <p>Arrastra cada verbo a la imagen correspondiente.</p>
       <div class="drag-grid">
         <div class="drag-area">
-          <div class="word" draggable="true" ondragstart="drag(event)" id="run">run</div>
-          <div class="word" draggable="true" ondragstart="drag(event)" id="eat">eat</div>
           <div class="word" draggable="true" ondragstart="drag(event)" id="study">study</div>
           <div class="word" draggable="true" ondragstart="drag(event)" id="play">play</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="run">runs</div>
+          <div class="word" draggable="true" ondragstart="drag(event)" id="eat">eats</div>
         </div>
         <div class="image-targets">
           <div class="target"><span class="emoji">🏃</span>
@@ -712,19 +809,38 @@
       <div class="activity-title">Actividad 3: Drag and Drop gramatical</div>
       <h2>Empareja los verbos</h2>
       <p>Arrastra la forma correcta del verbo al espacio correspondiente.</p>
+      <br>
       <div class="drag-grid">
-        <div class="drag-area">
-          <div class="word" draggable="true" ondragstart="drag(event)" id="plays">plays</div>
-          <div class="word" draggable="true" ondragstart="drag(event)" id="work">work</div>
-          <div class="word" draggable="true" ondragstart="drag(event)" id="watches">watches</div>
+        <div style="margin-top: 20px;" class="drag-area">
+          <div style="padding: 5px;" class="word" draggable="true" ondragstart="drag(event)" id="plays">plays</div>
+          <div style="padding: 5px;" class="word" draggable="true" ondragstart="drag(event)" id="work">work</div>
+          <div style="padding: 5px;" class="word" draggable="true" ondragstart="drag(event)" id="watches">watches</div>
+          <div style="padding: 5px;" class="word" draggable="true" ondragstart="drag(event)" id="studies">studies</div>
+          <div style="padding: 5px;" class="word" draggable="true" ondragstart="drag(event)" id="drinks">drinks</div>
+          <div style="padding: 5px;" class="word" draggable="true" ondragstart="drag(event)" id="reads">reads</div>
         </div>
+
         <div>
-          <p>She <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)" data-group="grammar"
-              data-answer="plays">Drop here</span> tennis.</p>
-          <p>They <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)" data-group="grammar"
-              data-answer="work">Drop here</span> at school.</p>
-          <p>He <span class="drop" ondrop="drop(event)" ondragover="allowDrop(event)" data-group="grammar"
-              data-answer="watches">Drop here</span> TV.</p>
+          <p>She <span style="display:inline-block; padding:0; margin-top: 15px;" class="drop" ondrop="drop(event)"
+              ondragover="allowDrop(event)" data-group="grammar" data-answer="plays">Drop here</span> tennis.</p>
+
+          <p>They <span style="display:inline-block; padding:0;margin-top: 15px;" class="drop" ondrop="drop(event)"
+              ondragover="allowDrop(event)" data-group="grammar" data-answer="work">Drop here</span> at school.</p>
+
+          <p>He <span style="display:inline-block; padding:0;margin-top: 15px;" class="drop" ondrop="drop(event)"
+              ondragover="allowDrop(event)" data-group="grammar" data-answer="watches">Drop here</span> TV.</p>
+
+          <p>My sister <span style="display:inline-block; padding:0;margin-top: 15px;" class="drop" ondrop="drop(event)"
+              ondragover="allowDrop(event)" data-group="grammar" data-answer="studies">Drop here</span> English every
+            day.</p>
+
+          <p>Tom <span style="display:inline-block; padding:0;margin-top: 15px;" class="drop" ondrop="drop(event)"
+              ondragover="allowDrop(event)" data-group="grammar" data-answer="drinks">Drop here</span> coffee every
+            morning.</p>
+
+          <p>Anna <span style="display:inline-block; padding:0;margin-top: 15px;" class="drop" ondrop="drop(event)"
+              ondragover="allowDrop(event)" data-group="grammar" data-answer="reads">Drop here</span> books before bed.
+          </p>
         </div>
       </div>
       <button onclick="checkDragGroup('grammar','feedbackGrammar','dragGrammar')">Check Activity</button>
@@ -758,8 +874,9 @@
       <div class="question" data-q="q2" data-answer="play">
         <p>2. They ____ football on Saturdays.</p>
         <div class="answers">
-          <div class="answer-card" data-value="plays"><strong>A.</strong> plays</div>
-          <div class="answer-card" data-value="play"><strong>B.</strong> play</div>
+          <div class="answer-card" data-value="play"><strong>A.</strong> play</div>
+          <div class="answer-card" data-value="plays"><strong>B.</strong> plays</div>
+
           <div class="answer-card" data-value="playing"><strong>C.</strong> playing</div>
           <div class="answer-card" data-value="played"><strong>D.</strong> played</div>
         </div>
@@ -768,9 +885,9 @@
         <p>3. ____ he like pizza?</p>
         <div class="answers">
           <div class="answer-card" data-value="Do"><strong>A.</strong> Do</div>
-          <div class="answer-card" data-value="Does"><strong>B.</strong> Does</div>
+          <div class="answer-card" data-value="Are"><strong>B.</strong> Are</div>
           <div class="answer-card" data-value="Is"><strong>C.</strong> Is</div>
-          <div class="answer-card" data-value="Are"><strong>D.</strong> Are</div>
+          <div class="answer-card" data-value="Does"><strong>D.</strong> Does</div>
         </div>
       </div>
       <div class="question" data-q="q4" data-answer="does not">
@@ -786,8 +903,9 @@
         <p>5. He ____ English after school.</p>
         <div class="answers">
           <div class="answer-card" data-value="study"><strong>A.</strong> study</div>
-          <div class="answer-card" data-value="studies"><strong>B.</strong> studies</div>
-          <div class="answer-card" data-value="studying"><strong>C.</strong> studying</div>
+          <div class="answer-card" data-value="studying"><strong>B.</strong> studying</div>
+          <div class="answer-card" data-value="studies"><strong>C.</strong> studies</div>
+
           <div class="answer-card" data-value="studied"><strong>D.</strong> studied</div>
         </div>
       </div>
@@ -795,8 +913,9 @@
         <p>6. ____ you drink water every day?</p>
         <div class="answers">
           <div class="answer-card" data-value="Does"><strong>A.</strong> Does</div>
-          <div class="answer-card" data-value="Do"><strong>B.</strong> Do</div>
-          <div class="answer-card" data-value="Are"><strong>C.</strong> Are</div>
+  
+          <div class="answer-card" data-value="Are"><strong>B.</strong> Are</div>
+                  <div class="answer-card" data-value="Do"><strong>C.</strong> Do</div>
           <div class="answer-card" data-value="Is"><strong>D.</strong> Is</div>
         </div>
       </div>
@@ -804,16 +923,18 @@
         <p>7. My father ____ TV after dinner.</p>
         <div class="answers">
           <div class="answer-card" data-value="watch"><strong>A.</strong> watch</div>
-          <div class="answer-card" data-value="watches"><strong>B.</strong> watches</div>
+           <div class="answer-card" data-value="watched"><strong>B.</strong> watched</div>
           <div class="answer-card" data-value="watching"><strong>C.</strong> watching</div>
-          <div class="answer-card" data-value="watched"><strong>D.</strong> watched</div>
+           <div class="answer-card" data-value="watches"><strong>D.</strong> watches</div>
+        
         </div>
       </div>
       <div class="question" data-q="q8" data-answer="does">
         <p>8. What time ____ she wake up?</p>
         <div class="answers">
-          <div class="answer-card" data-value="do"><strong>A.</strong> do</div>
-          <div class="answer-card" data-value="does"><strong>B.</strong> does</div>
+                <div class="answer-card" data-value="does"><strong>A.</strong> does</div>
+          <div class="answer-card" data-value="do"><strong>B.</strong> do</div>
+    
           <div class="answer-card" data-value="is"><strong>C.</strong> is</div>
           <div class="answer-card" data-value="are"><strong>D.</strong> are</div>
         </div>
