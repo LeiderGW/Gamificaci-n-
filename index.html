@@ -531,9 +531,410 @@
       color: #fff;
     }
   </style>
+
+
+
+  <style>
+    /*=========================================================
+        WELCOME SCREEN
+=========================================================*/
+
+    .welcome-modal {
+
+      position: fixed;
+      inset: 0;
+
+      background: rgba(5, 8, 35, .75);
+
+      backdrop-filter: blur(12px);
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      z-index: 999999;
+
+      overflow: hidden;
+
+      animation: fadeIn .8s;
+    }
+
+    /*------------------------
+      Fondo animado
+-------------------------*/
+
+    .welcome-modal::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .25) 2px, transparent 3px),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, .20) 2px, transparent 3px),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, .20) 2px, transparent 3px),
+        radial-gradient(circle at 80% 75%, rgba(255, 255, 255, .30) 2px, transparent 3px);
+
+      background-size: 260px 260px;
+
+      animation: starsMove 20s linear infinite;
+
+      opacity: .8;
+
+    }
+
+    /*--------------------------------*/
+
+    .welcome-card {
+
+      position: relative;
+
+      width: min(90%, 850px);
+
+      border-radius: 35px;
+
+      padding: 30px;
+
+
+      background: rgba(255, 255, 255, .12);
+
+      backdrop-filter: blur(18px);
+
+      border: 1px solid rgba(255, 255, 255, .25);
+
+      box-shadow:
+
+        0 25px 70px rgba(0, 0, 0, .45),
+
+        0 0 35px rgba(0, 245, 212, .20);
+
+      text-align: center;
+
+      animation: zoomIn .8s;
+
+    }
+
+    /*--------------------------------*/
+
+    .logo-area img {
+
+      width: 450px;
+
+      filter: drop-shadow(0 0 15px rgb(255, 255, 255));
+
+    }
+
+    /*--------------------------------*/
+
+    .welcome-title h1 {
+
+      font-size: 2rem;
+
+      font-weight: 900;
+
+      margin-bottom: 5px;
+
+      background: linear-gradient(90deg,
+
+          #ffffff,
+
+          #ffdd57,
+
+          #00f5d4,
+
+          #ffffff);
+
+      background-size: 300%;
+
+      -webkit-background-clip: text;
+
+      color: transparent;
+
+      animation: shine 6s linear infinite;
+
+    }
+
+
+
+
+    /*--------------------------------*/
+
+    .authors-card {
+
+      background: rgba(255, 255, 255, .12);
+
+      border-radius: 22px;
+
+      padding: 5px;
+
+      margin: 25px 0;
+
+      border: 1px solid rgba(255, 255, 255, .15);
+
+    }
+
+    .authors-card h3 {
+
+      color: #ffdd57;
+
+      margin-bottom: 18px;
+
+    }
+
+    .authors-card ul {
+
+      list-style: none;
+
+      padding: 0;
+
+    }
+
+    .authors-card li {
+
+      padding: 8px;
+
+      font-size: 1.08rem;
+
+    }
+
+    /*--------------------------------*/
+
+    .info-card {
+
+      margin-top: 20px;
+
+      line-height: 1.9;
+
+      opacity: .95;
+
+    }
+
+    .version {
+
+      margin-top: 18px;
+
+      font-size: .95rem;
+
+      color: #00f5d4;
+
+    }
+
+    /*--------------------------------*/
+
+    .start-button {
+
+      margin-top: 35px;
+
+      background: linear-gradient(90deg,
+
+          #ffdd57,
+
+          #ffd000);
+
+      color: #3a0ca3;
+
+      border: none;
+
+      padding: 18px 45px;
+
+      font-size: 1.15rem;
+
+      font-weight: 900;
+
+      border-radius: 50px;
+
+      cursor: pointer;
+
+      transition: .35s;
+
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .30);
+
+    }
+
+    .start-button:hover {
+
+      transform: translateY(-4px) scale(1.05);
+
+      background: white;
+
+    }
+
+    /*--------------------------------*/
+
+    @keyframes zoomIn {
+
+      from {
+
+        opacity: 0;
+
+        transform: scale(.8);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+      }
+
+    }
+
+    @keyframes fadeIn {
+
+      from {
+
+        opacity: 0;
+
+      }
+
+      to {
+
+        opacity: 1;
+
+      }
+
+    }
+
+    @keyframes shine {
+
+      from {
+
+        background-position: 0%;
+
+      }
+
+      to {
+
+        background-position: 300%;
+
+      }
+
+    }
+
+    @keyframes starsMove {
+
+      from {
+
+        background-position: 0 0;
+
+      }
+
+      to {
+
+        background-position: 350px 350px;
+
+      }
+
+    }
+
+    /*--------------------------------*/
+
+    @media(max-width:700px) {
+
+      .welcome-card {
+
+        padding: 30px 22px;
+
+      }
+
+      .welcome-title h1 {
+
+        font-size: 2.2rem;
+
+      }
+
+      .logo-area img {
+
+        width: 110px;
+
+      }
+
+    }
+  </style>
 </head>
 
 <body>
+
+
+  <!-- =========================
+     WELCOME SCREEN
+========================== -->
+
+  <div id="welcomeModal" class="welcome-modal">
+
+    <div class="welcome-card">
+
+      <!-- Logo -->
+      <div class="logo-area">
+        <img src="logo-unicartagena.png" alt="Universidad de Cartagena">
+      </div>
+
+      <div class="welcome-title">
+        <h1>Present Simple Adventure</h1>
+        <p>
+          Plataforma gamificada para el aprendizaje del
+          <strong>Present Simple</strong>
+        </p>
+      </div>
+
+
+      <div class="authors-card">
+
+        <h3>Creadores</h3>
+
+        <ul style="display: flex;">
+
+          <li>👨‍🏫 Jose Yorley Rodríguez Mosquera</li>
+
+          <li>👨‍🏫 Wilinton Perea Perea</li>
+
+          <li>👨‍🏫 Leider Javier Palacios Palacios</li>
+
+          <li>👨‍🏫 Lucas Palacios Rodríguez</li>
+
+        </ul>
+
+      </div>
+
+      <div class="info-card">
+
+
+
+        <p>Fundamentos de la Educación Virtual</p>
+
+
+        <p><strong>Docente</strong></p>
+
+        <p>Dr. Efraín Pereira Bernal</p>
+
+      </div>
+
+      <button class="start-button" onclick="closeWelcome()">
+
+        🚀 Comenzar aventura
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
   <div class="container">
     <div class="progress-wrap">
       <div class="progress-info"><span>🚀 Progreso del reto</span><span id="progressText">0%</span></div>
@@ -913,9 +1314,9 @@
         <p>6. ____ you drink water every day?</p>
         <div class="answers">
           <div class="answer-card" data-value="Does"><strong>A.</strong> Does</div>
-  
+
           <div class="answer-card" data-value="Are"><strong>B.</strong> Are</div>
-                  <div class="answer-card" data-value="Do"><strong>C.</strong> Do</div>
+          <div class="answer-card" data-value="Do"><strong>C.</strong> Do</div>
           <div class="answer-card" data-value="Is"><strong>D.</strong> Is</div>
         </div>
       </div>
@@ -923,18 +1324,18 @@
         <p>7. My father ____ TV after dinner.</p>
         <div class="answers">
           <div class="answer-card" data-value="watch"><strong>A.</strong> watch</div>
-           <div class="answer-card" data-value="watched"><strong>B.</strong> watched</div>
+          <div class="answer-card" data-value="watched"><strong>B.</strong> watched</div>
           <div class="answer-card" data-value="watching"><strong>C.</strong> watching</div>
-           <div class="answer-card" data-value="watches"><strong>D.</strong> watches</div>
-        
+          <div class="answer-card" data-value="watches"><strong>D.</strong> watches</div>
+
         </div>
       </div>
       <div class="question" data-q="q8" data-answer="does">
         <p>8. What time ____ she wake up?</p>
         <div class="answers">
-                <div class="answer-card" data-value="does"><strong>A.</strong> does</div>
+          <div class="answer-card" data-value="does"><strong>A.</strong> does</div>
           <div class="answer-card" data-value="do"><strong>B.</strong> do</div>
-    
+
           <div class="answer-card" data-value="is"><strong>C.</strong> is</div>
           <div class="answer-card" data-value="are"><strong>D.</strong> are</div>
         </div>
@@ -1172,6 +1573,98 @@
     }
 
     initMemory();
+  </script>
+
+
+  <script>
+    /*====================================================
+          WELCOME SCREEN
+  ====================================================*/
+
+    const welcomeModal = document.getElementById("welcomeModal");
+
+    /*-------------------------
+        Crear estrellas
+    -------------------------*/
+
+    function createStars() {
+
+      for (let i = 0; i < 120; i++) {
+
+        const star = document.createElement("span");
+
+        star.className = "floating-star";
+
+        star.style.left = Math.random() * 100 + "%";
+
+        star.style.top = Math.random() * 100 + "%";
+
+        star.style.animationDuration =
+          (4 + Math.random() * 8) + "s";
+
+        star.style.animationDelay =
+          (Math.random() * 5) + "s";
+
+        star.style.transform =
+          "scale(" + (0.3 + Math.random()) + ")";
+
+        welcomeModal.appendChild(star);
+
+      }
+
+    }
+
+    createStars();
+
+    /*-------------------------
+        Cerrar pantalla
+    -------------------------*/
+
+    function closeWelcome() {
+
+      welcomeModal.style.animation =
+        "fadeOut .8s forwards";
+
+      setTimeout(() => {
+
+        welcomeModal.style.display = "none";
+
+        window.scrollTo({
+
+          top: 0,
+
+          behavior: "smooth"
+
+        });
+
+      }, 800);
+
+    }
+
+    /*-------------------------
+        Efecto botón
+    -------------------------*/
+
+    const startButton =
+      document.querySelector(".start-button");
+
+    setInterval(() => {
+
+      startButton.animate([
+
+        { transform: "scale(1)" },
+
+        { transform: "scale(1.08)" },
+
+        { transform: "scale(1)" }
+
+      ], {
+
+        duration: 1200
+
+      });
+
+    }, 2500);
   </script>
 </body>
 
